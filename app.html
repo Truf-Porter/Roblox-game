@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roblox Game Creator</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <main class="card">
+    <header class="head">
+      <div class="title">
+        <img src="icons/icon48.png" alt="" width="28" height="28" />
+        <h1>Roblox Game Creator</h1>
+      </div>
+
+      <div id="account" class="account" data-state="checking">
+        <img id="avatar" class="avatar" alt="" hidden />
+        <span id="accountText">Checking sign-in…</span>
+        <button id="recheck" class="link-btn" type="button" hidden>Check again</button>
+      </div>
+    </header>
+
+    <div id="signedOut" class="notice" hidden>
+      You're not signed in to Roblox in this browser.
+      <a href="https://www.roblox.com/login" target="_blank" rel="noopener">Sign in on roblox.com</a>,
+      then come back here.
+    </div>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab" role="tab" data-mode="new" aria-selected="true" type="button">New game</button>
+      <button class="tab" role="tab" data-mode="existing" aria-selected="false" type="button">Update existing game</button>
+    </nav>
+
+    <form id="form" novalidate>
+      <label class="drop" id="drop">
+        <input id="file" type="file" accept=".rbxl,.rbxlx" />
+        <span class="drop-title" id="fileTitle">Choose your .rbxl file</span>
+        <span class="drop-sub" id="fileSub">or drop it here</span>
+      </label>
+
+      <div class="only-new">
+        <label class="field">
+          <span>Game name</span>
+          <input id="name" type="text" maxlength="50" placeholder="My Game" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span>Description <em>(optional)</em></span>
+          <textarea id="description" rows="2" maxlength="1000" placeholder="What's your game about?"></textarea>
+        </label>
+
+        <label class="field">
+          <span>Create it under</span>
+          <select id="owner">
+            <option value="">My account</option>
+          </select>
+        </label>
+
+        <label class="check">
+          <input id="makePublic" type="checkbox" />
+          <span>Make the game public right away</span>
+        </label>
+      </div>
+
+      <div class="only-existing" hidden>
+        <label class="field">
+          <span>Place ID of the game to overwrite</span>
+          <input id="existingPlaceId" type="text" inputmode="numeric" placeholder="e.g. 1234567890" autocomplete="off" />
+        </label>
+        <p class="hint">Everything in that place gets replaced with your file.</p>
+      </div>
+
+      <button id="go" class="primary" type="submit" disabled>Create game</button>
+    </form>
+
+    <section id="progress" class="progress" hidden>
+      <ol id="steps" class="steps"></ol>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+      <div id="links" class="links" hidden>
+        <a id="playLink" class="btn" target="_blank" rel="noopener">Open game page</a>
+        <a id="dashLink" class="btn ghost" target="_blank" rel="noopener">Open in Creator Dashboard</a>
+      </div>
+    </section>
+
+    <footer class="foot">
+      Uses the Roblox account you're signed into in Chrome. Your file and login only ever go to roblox.com.
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
